@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
+import '../../screens/profile_verification_screens/payment_processing_step.dart';
+
 class Unlockexclusivebenefit extends StatelessWidget {
   final VoidCallback onClose;
 
@@ -193,7 +195,13 @@ class Unlockexclusivebenefit extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(basePadding),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PaymentProcessingStep(),
+                          ));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF0F3CC9),
                       minimumSize: Size(modalWidth * 0.85, height * 0.06),

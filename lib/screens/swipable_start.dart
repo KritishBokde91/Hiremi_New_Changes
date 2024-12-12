@@ -138,7 +138,7 @@ _pageController.animateToPage(
                       isDragged = false;
                       trackColor = Colors.white;
                     });
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => LoginScreenUpdated()));

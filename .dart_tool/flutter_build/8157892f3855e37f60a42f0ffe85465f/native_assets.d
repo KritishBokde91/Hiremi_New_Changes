@@ -1,0 +1,1 @@
+ C:\\Users\\Hp\\AndroidStudioProjects\\hiremi_v2\\.dart_tool\\flutter_build\\8157892f3855e37f60a42f0ffe85465f\\native_assets.yaml: 

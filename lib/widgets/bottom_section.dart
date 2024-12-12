@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class BottomTextSection extends StatelessWidget {
-  const BottomTextSection({required this.bottomText});
+  const BottomTextSection({super.key, required this.bottomText});
 
   final String bottomText;
 

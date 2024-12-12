@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pre_dashboard/widgets/non_verified/custom_drawer.dart';
+import 'package:pre_dashboard/widgets/non_verified/custombottombar.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -9,12 +10,12 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  int currentIndex = 0;
   bool isTrue = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      drawer: const CustomDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -27,9 +28,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: IconButton(
-              onPressed: () {
-
-              },
+              onPressed: () {},
               icon: Stack(
                 children: [
                   const Icon(
@@ -48,10 +47,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           color: const Color(0xFFDBE4FF)),
                       child: Center(
                           child: Text(
-                            '3',
-                            style:
-                            TextStyle(fontSize: size.width * 0.023, fontWeight: FontWeight.bold, color: const Color(0xFF0F3CC9)),
-                          )),
+                        '3',
+                        style: TextStyle(
+                            fontSize: size.width * 0.023,
+                            fontWeight: FontWeight.bold,
+                            color: const Color(0xFF0F3CC9)),
+                      )),
                     ),
                   )
                 ],
@@ -60,6 +61,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ],
       ),
+      drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
@@ -118,8 +120,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     child: const Row(
                       children: [
-                        Icon(Icons.verified, color: Colors.white, size: 13,),
-                        SizedBox(width: 6,),
+                        Icon(
+                          Icons.verified,
+                          color: Colors.white,
+                          size: 13,
+                        ),
+                        SizedBox(
+                          width: 6,
+                        ),
                         Text(
                           'Verified',
                           style: TextStyle(
@@ -143,10 +151,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const SizedBox(height: 10),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.white,
-                  border: Border.all(color: const Color(0xFF808080))
-                ),
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.white,
+                    border: Border.all(color: const Color(0xFF808080))),
                 child: ListTile(
                   leading: const Icon(Icons.info_outline, color: Colors.blue),
                   title: const Text('Personal Info'),
@@ -167,12 +174,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
-                    border: Border.all(color: const Color(0xFF808080))
-                ),
+                    border: Border.all(color: const Color(0xFF808080))),
                 child: Column(
                   children: [
                     ListTile(
-                      leading: const Icon(Icons.lock_outline, color: Colors.blue),
+                      leading:
+                          const Icon(Icons.lock_outline, color: Colors.blue),
                       title: const Text('Change Password'),
                       trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                       onTap: () {},
@@ -213,15 +220,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
-                    border: Border.all(color: const Color(0xFF808080))
-                ),
+                    border: Border.all(color: const Color(0xFF808080))),
                 child: Column(
-                  children: [ListTile(
-                    leading: const Icon(Icons.info_outline, color: Colors.blue),
-                    title: const Text('About Us'),
-                    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-                    onTap: () {},
-                  ),
+                  children: [
+                    ListTile(
+                      leading:
+                          const Icon(Icons.info_outline, color: Colors.blue),
+                      title: const Text('About Us'),
+                      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                      onTap: () {},
+                    ),
                     ListTile(
                       leading: const Icon(Icons.support_agent_outlined,
                           color: Colors.blue),
@@ -236,6 +244,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
       ),
+      bottomNavigationBar: Custombottombar(currentIndex: currentIndex, onTabSelected: (index) => setState(() {
+        currentIndex = index;
+      })),
     );
   }
 }

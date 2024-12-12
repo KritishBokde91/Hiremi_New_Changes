@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pre_dashboard/screens/notification_setting_screens/help_and_support2.dart';
+import 'package:pre_dashboard/widgets/non_verified/custom_drawer.dart';
 import 'package:pre_dashboard/widgets/non_verified/custombottombar.dart';
 
 class HelpAndSupport extends StatefulWidget {
@@ -70,6 +72,7 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
           )
         ],
       ),
+      drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
@@ -120,7 +123,7 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
               // Learn More Button
               TextButton(
                 onPressed: () {
-                  // Handle Learn More button tap
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HelpAndSupport2(),));
                 },
                 child: const Text(
                   'Learn More',

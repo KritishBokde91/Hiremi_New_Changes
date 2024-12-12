@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:pre_dashboard/screens/notification_setting_screens/setting_screen.dart';
+import 'package:pre_dashboard/notifier/index_notifier.dart';
+import 'package:pre_dashboard/screens/notification_setting_screens/change_password.dart';
+import 'package:provider/provider.dart';
 
 import '../../screens/notification_setting_screens/help_and_support.dart';
+import '../../screens/notification_setting_screens/setting_screen.dart';
 import 'logoutDialog.dart';
 
-class CustomDrawer extends StatelessWidget {
+class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
 
+  @override
+  State<CustomDrawer> createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -35,7 +43,7 @@ class CustomDrawer extends StatelessWidget {
                         CircularPercentIndicator(
                           radius: 30,
                           backgroundColor:
-                          const Color(0xFF808080).withOpacity(0.25),
+                              const Color(0xFF808080).withOpacity(0.25),
                           lineWidth: 6,
                           animation: false,
                           center: const Text(
@@ -59,10 +67,10 @@ class CustomDrawer extends StatelessWidget {
                             Container(
                               height: 18,
                               padding:
-                              const EdgeInsets.symmetric(horizontal: 8),
+                                  const EdgeInsets.symmetric(horizontal: 8),
                               decoration: BoxDecoration(
                                 border:
-                                Border.all(color: const Color(0xFF0F3CC9)),
+                                    Border.all(color: const Color(0xFF0F3CC9)),
                                 borderRadius: BorderRadius.circular(13),
                               ),
                               child: const Row(
@@ -82,7 +90,7 @@ class CustomDrawer extends StatelessWidget {
                             const Text(
                               'KritishBokde@gmail.com',
                               style:
-                              TextStyle(fontSize: 12, color: Colors.grey),
+                                  TextStyle(fontSize: 12, color: Colors.grey),
                             ),
                           ],
                         ),
@@ -115,7 +123,7 @@ class CustomDrawer extends StatelessWidget {
                           const SizedBox(height: 4),
                           Padding(
                             padding:
-                            const EdgeInsets.symmetric(horizontal: 8.0),
+                                const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Container(
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(6),
@@ -146,7 +154,11 @@ class CustomDrawer extends StatelessWidget {
                 Icons.menu,
                 'Settings',
                 () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsScreen(),));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SettingsScreen(),
+                      ));
                 },
               ),
               SizedBox(height: height * 0.015),
@@ -154,14 +166,16 @@ class CustomDrawer extends StatelessWidget {
                 context,
                 Icons.lock,
                 'Change Password',
-                () => {},
+                () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ChangePasswordScreen(),));
+                },
               ),
               SizedBox(height: height * 0.015),
               _buildMenuItemGeneral(
                 context,
                 Icons.paste,
                 'About App',
-                ()  {
+                () {
                   // Navigator.push(
                   //   context,
                   //   MaterialPageRoute(
@@ -179,7 +193,9 @@ class CustomDrawer extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const HelpAndSupport(currentIndex: 0,),
+                      builder: (context) => const HelpAndSupport(
+                        currentIndex: 0,
+                      ),
                     ),
                   );
                 },
